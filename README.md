@@ -24,6 +24,7 @@ It works a little like the stack. A large block is allocated, and when you reque
   to initialize (call the constructor) on an object made with placement new.
 - You can get the total memory allocated with getAllocated(), the total size of the data stored with getBytes(),
   and you can get the number of 4k blocks used with getBlocks()
+- flatten will allocate a buffer as large as the content of the blocks, then serialize the blocks into the buffer and return the pointer. Note: You have now just used a lot more memory, and you must delete the pointer when you are done (as in: delete [] thePointer)
 
 
 **The MIT License (MIT)**
