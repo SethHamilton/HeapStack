@@ -66,7 +66,7 @@ private:
 public:
 
 	// constructor, default allocates 4 meg blocks. 
-	HeapStack( int64_t blocks4k = 1024 ) : // block4k is the number of 4k sections that make a block
+	HeapStack(int64_t blocks4k = 1024 ) : // block4k is the number of 4k sections that make a block
 		blockSize( blocks4k * 4096LL ),
 		dataSize( blockSize - headerSize ),
 		blocks(0),
@@ -92,16 +92,14 @@ public:
 	}
 
 	// newPtr - returns a pointer to a block of memory of "size"
-	char* newPtr(int64_t size)
+	inline char* newPtr(int64_t size)
 	{
 
 		if (!tail || tail->endOffset + size >= dataSize)
 			newBlock();
-
 	
 		char* t = tail->data + tail->endOffset;
 		tail->endOffset += size;
-
 		bytes += size;
 		 
 		return t;
